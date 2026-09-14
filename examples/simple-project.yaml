@@ -1,0 +1,72 @@
+schema_version: "0.1"
+status: CONFIRMED_PROJECT_INTAKE
+voice_verification:
+  required: true
+  verified: true
+  session_id: voice-session-example-001
+  host_capability: verified_voice_session
+project:
+  name: Weekly meal planning notebook
+  problem: I lose time deciding what to cook and forget ingredients already at home.
+  users:
+    - One household cook
+  outcome: Choose a weekly meal outline and know what ingredients are missing.
+  scope:
+    - Capture available ingredients
+    - Record preferred meals
+    - Produce a weekly outline
+  constraints:
+    - Must work for one person
+    - Must be understandable without a tutorial
+  non_goals:
+    - Grocery delivery
+    - Nutrition or medical advice
+  success_signal: The user can make a weekday dinner plan in under five minutes.
+  risks:
+    - The ingredient list may become stale.
+  accepted_unknowns:
+    - Exact meal data format can be decided later
+evidence:
+  spoken_answers:
+    - The user wants less decision fatigue during weekday dinners.
+    - The user already keeps a rough ingredient list.
+  hypotheses:
+    - A lightweight weekly outline may be sufficient.
+  contradictions: []
+  coverage:
+    - problem
+    - users
+    - desired_outcome
+    - scope
+    - constraints
+    - non_goals
+    - success_signal
+    - risks
+    - unknowns
+confidence:
+  overall: 0.95
+  target: 0.95
+  per_dimension:
+    problem: 0.98
+    users: 0.99
+    desired_outcome: 0.96
+    scope: 0.95
+    constraints: 0.95
+    non_goals: 0.96
+    success_signal: 0.95
+    risks: 0.95
+    unknowns: 0.95
+reuse_first:
+  required: true
+  discovery_order:
+    - official_capabilities
+    - installed_skills_plugins
+    - user_assets_github
+    - official_sdks_reference_implementations
+    - high_quality_skills_open_source
+    - adapted_combination
+    - build_new
+confirmation:
+  readback_completed: true
+  explicit_voice_confirmation: true
+  confirmed_at: "2026-09-14T00:00:00Z"

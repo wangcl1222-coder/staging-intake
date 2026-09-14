@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/wangcl1222-coder/staging-intake/schema/project-intake.schema.json",
+  "title": "Confirmed Project Intake",
+  "description": "The only successful output of staging-intake: a voice-confirmed, solution-neutral project intake.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "voice_verification", "project", "evidence", "confidence", "reuse_first", "confirmation"],
+  "properties": {
+    "schema_version": {"type": "string", "const": "0.1"},
+    "status": {"type": "string", "const": "CONFIRMED_PROJECT_INTAKE"},
+    "voice_verification": {
+      "type": "object", "additionalProperties": false,
+      "required": ["required", "verified", "session_id", "host_capability"],
+      "properties": {
+        "required": {"const": true},
+        "verified": {"const": true},
+        "session_id": {"type": "string", "minLength": 1},
+        "host_capability": {"type": "string", "enum": ["verified_voice_session"]}
+      }
+    },
+    "project": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "problem", "users", "outcome", "scope", "constraints", "non_goals", "success_signal", "risks", "accepted_unknowns"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "problem": {"type": "string", "minLength": 1},
+        "users": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "outcome": {"type": "string", "minLength": 1},
+        "scope": {"type": "array", "items": {"type": "string"}},
+        "constraints": {"type": "array", "items": {"type": "string"}},
+        "non_goals": {"type": "array", "items": {"type": "string"}},
+        "success_signal": {"type": "string", "minLength": 1},
+        "risks": {"type": "array", "items": {"type": "string"}},
+        "accepted_unknowns": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["spoken_answers", "hypotheses", "contradictions", "coverage"],
+      "properties": {
+        "spoken_answers": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "hypotheses": {"type": "array", "items": {"type": "string"}},
+        "contradictions": {"type": "array", "items": {"type": "string"}, "maxItems": 0},
+        "coverage": {"type": "array", "items": {"type": "string", "enum": ["problem", "users", "desired_outcome", "scope", "constraints", "non_goals", "success_signal", "risks", "unknowns"]}, "minItems": 9, "uniqueItems": true}
+      }
+    },
+    "confidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["overall", "target", "per_dimension"],
+      "properties": {
+        "overall": {"type": "number", "minimum": 0.95, "maximum": 1},
+        "target": {"type": "number", "const": 0.95},
+        "per_dimension": {"type": "object", "additionalProperties": {"type": "number", "minimum": 0, "maximum": 1}}
+      }
+    },
+    "reuse_first": {
+      "type": "object", "additionalProperties": false,
+      "required": ["required", "discovery_order"],
+      "properties": {
+        "required": {"const": true},
+        "discovery_order": {"type": "array", "minItems": 6, "uniqueItems": true, "items": {"type": "string", "enum": ["official_capabilities", "installed_skills_plugins", "user_assets_github", "official_sdks_reference_implementations", "high_quality_skills_open_source", "adapted_combination", "build_new"]}}
+      }
+    },
+    "confirmation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["readback_completed", "explicit_voice_confirmation", "confirmed_at"],
+      "properties": {
+        "readback_completed": {"const": true},
+        "explicit_voice_confirmation": {"const": true},
+        "confirmed_at": {"type": "string", "format": "date-time"}
+      }
+    }
+  }
+}
