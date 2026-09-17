@@ -1,23 +1,23 @@
-# Voice policy
+# Input-channel policy
 
-Voice is a hard gate, not a preference.
+Voice is an optional preferred channel, not a hard gate. The interview must remain usable when voice disconnects or is unavailable.
 
-## Allowed
+## Channel selection
 
-- Typed text may activate the skill: “开始立项”, “start intake”, or equivalent.
-- Typed text may request formatting after an already completed voice interview.
-- The assistant may use transcription as evidence only when the host explicitly exposes that the source was a verified voice session.
+- Voice may be used when it is available and stable.
+- Typed text may activate or continue the skill: “开始立项”, “start intake”, or equivalent.
+- A user may switch between voice and text at any point without restarting the interview.
+- Record the available channel/source as internal provenance when useful, but do not require or infer a special voice capability.
 
-## Forbidden
+## Forbidden behavior
 
-- Treating ordinary typed text as a spoken answer.
-- Inferring voice from message shape, punctuation, timing, or a transcript without provenance.
-- Completing, compiling, or marking `CONFIRMED_PROJECT_INTAKE` when the host cannot verify voice.
-- Treating a typed answer during an active interview as evidence.
+- Blocking progress because voice is unavailable or disconnected.
+- Discarding a typed answer during an active interview.
+- Requiring a voice session for readback, confirmation, or compilation.
+- Designing a solution, choosing technology, or decomposing tasks because the user changed channels.
 
-## Pause and resume
+## Continuity
 
-On typed input, lost voice, unavailable provenance, or host capability uncertainty: transition to `VOICE_REQUIRED`, preserve prior verified evidence, discard the new text as formal evidence, and request a verified voice session before continuing. Resume only after verification returns true.
+On voice loss or channel change, preserve all confirmed evidence and continue in `INTERVIEW_ACTIVE` with the next highest-information-gain question. Do not repeat questions solely because the channel changed.
 
-The final readback and explicit confirmation must also be spoken and verifiable. A text “yes” cannot pass the final gate.
-
+The final readback and explicit confirmation may be spoken or typed. The confirmation must be explicit and attributable to the user, but it does not require voice verification.
