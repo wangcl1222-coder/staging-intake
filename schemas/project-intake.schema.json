@@ -4,7 +4,7 @@
   "title": "PROJECT_INTAKE_V1",
   "type": "object",
   "additionalProperties": false,
-  "required": ["contract_version", "source_mode", "project", "scope", "constraints", "acceptance", "unknowns"],
+  "required": ["contract_version", "source_mode", "project", "scope", "constraints", "acceptance", "unknowns", "planning_directives"],
   "properties": {
     "contract_version": {"const": "PROJECT_INTAKE_V1"},
     "source_mode": {"enum": ["interview_skill", "direct_human", "direct_codex", "imported_existing_project"]},
@@ -57,6 +57,19 @@
       }
     },
     "unknowns": {"type": "array", "items": {"type": "string"}},
+    "planning_directives": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "reuse_first", "visible_result_first", "real_blocker_only", "build_new_last", "policy_ref"],
+      "properties": {
+        "mode": {"type": "string", "enum": ["MVP_FIRST", "FULL_DESIGN"], "default": "MVP_FIRST"},
+        "reuse_first": {"const": true, "default": true},
+        "visible_result_first": {"const": true, "default": true},
+        "real_blocker_only": {"const": true, "default": true},
+        "build_new_last": {"const": true, "default": true},
+        "policy_ref": {"const": "ai-engineering-control/docs/policies/PLANNER_POLICY.md"}
+      }
+    },
     "human_gates": {"type": "array", "items": {"type": "string"}},
     "acceptance": {"type": "array", "minItems": 1, "items": {"type": "string"}},
     "deliverables": {"type": "array", "items": {"type": "string"}},

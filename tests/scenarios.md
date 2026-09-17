@@ -8,6 +8,6 @@
 6. **Repeated question** — A resolved dimension is not asked again; the next question targets the highest-information missing dimension or contradiction.
 7. **Blocking contradiction** — Conflicting spoken answers keep the flow in active interview until resolved or explicitly moved to `accepted_unknowns`.
 8. **Final confirmation** — Readback without explicit verified spoken confirmation cannot compile; a verified spoken confirmation can transition to `READY_FOR_HANDOFF`.
-9. **Reuse-first invariant** — A compiled intake always has `reuse_first.required: true` and the ordered discovery list ending in `build_new`.
-10. **Boundary** — The skill never creates an AI Engineering TASK, calls `ai-engineering-control`, plans, designs, or implements.
-
+9. **Planning defaults** — A compiled `PROJECT_INTAKE_V1` includes `planning_directives` with `mode: MVP_FIRST`, all four boolean directives set to `true`, and `policy_ref` set to `ai-engineering-control/docs/policies/PLANNER_POLICY.md`.
+10. **Explicit full-design override** — `mode: FULL_DESIGN` is allowed only when the user explicitly requests completeness/full design or explicitly rejects MVP-first; project complexity alone never changes the mode.
+11. **Planning boundary** — `planning_directives` only informs a later Planner; the skill never copies Planner Policy content, creates an AI Engineering TASK, calls `ai-engineering-control`, plans, designs, selects technology, routes workers, or implements.

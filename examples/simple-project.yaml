@@ -33,6 +33,13 @@ evidence:
   missing: []
 unknowns:
   - Exact meal data format can be decided later
+planning_directives:
+  mode: MVP_FIRST
+  reuse_first: true
+  visible_result_first: true
+  real_blocker_only: true
+  build_new_last: true
+  policy_ref: ai-engineering-control/docs/policies/PLANNER_POLICY.md
 human_gates: []
 acceptance:
   - The user can make a weekday dinner plan in under five minutes
