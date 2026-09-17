@@ -67,7 +67,7 @@
         "visible_result_first": {"const": true, "default": true},
         "real_blocker_only": {"const": true, "default": true},
         "build_new_last": {"const": true, "default": true},
-        "policy_ref": {"const": "ai-engineering-control/docs/policies/PLANNER_POLICY.md"}
+        "policy_ref": {"const": "ai-engineering-control/policies/PLANNER_POLICY.md"}
       }
     },
     "human_gates": {"type": "array", "items": {"type": "string"}},

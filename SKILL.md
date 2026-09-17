@@ -32,7 +32,7 @@ The only successful output is a confirmed canonical `PROJECT_INTAKE_V1`. Do not 
 - Put confirmed scope into `scope.in_scope` and confirmed exclusions into `scope.out_of_scope`.
 - Put explicit unresolved items into `unknowns`; never invent missing facts.
 - Put any unresolved approval requirement into `human_gates`.
-- Include `planning_directives` in the final object with the defaults `mode: MVP_FIRST`, `reuse_first: true`, `visible_result_first: true`, `real_blocker_only: true`, `build_new_last: true`, and `policy_ref: ai-engineering-control/docs/policies/PLANNER_POLICY.md`.
+- Include `planning_directives` in the final object with the defaults `mode: MVP_FIRST`, `reuse_first: true`, `visible_result_first: true`, `real_blocker_only: true`, `build_new_last: true`, and `policy_ref: ai-engineering-control/policies/PLANNER_POLICY.md`.
 - Change `planning_directives.mode` to `FULL_DESIGN` only when the user explicitly states an intent to move away from MVP-first, prioritize completeness, or request full architecture/process/detail design. Never infer this override from project complexity. Keep all other directive values unchanged.
 - Treat `planning_directives` as instructions for a later Planner only. Do not copy Planner Policy content into this Skill and do not perform architecture design, technology selection, TASK decomposition, worker routing, or implementation.
 - Use `intake_status: READY_FOR_HANDOFF` only after the voice confirmation gate passes. Otherwise use `NEEDS_MORE_INFORMATION`.
