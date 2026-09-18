@@ -1,6 +1,6 @@
 # staging-intake
 
-An independent Agent Skill for converting an early project idea into a user-confirmed `PROJECT_INTAKE` through a focused voice-or-text interview.
+An independent Agent Skill for converting either an early project idea or an existing-project reassessment into a user-confirmed `PROJECT_INTAKE` through a focused voice-or-text interview.
 
 ## Scope
 
@@ -12,6 +12,7 @@ This repository deliberately stops before planning or implementation. It does no
 - `schemas/project-intake.schema.json` — JSON Schema for the handoff object.
 - `references/voice-policy.md` — optional voice preference and cross-channel continuity rules.
 - `references/interview-coverage.md` — state machine, ledger, question policy, and completion gates.
+- `references/reintake-policy.md` — current-state baseline ingestion and reassessment rules for projects already underway.
 - `references/reuse-first-policy.md` — required future discovery order.
 - `examples/simple-project.yaml` — readable example of a confirmed intake.
 - `tests/scenarios.md` — behavioral acceptance scenarios.

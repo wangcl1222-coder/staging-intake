@@ -20,4 +20,6 @@ Voice is an optional preferred channel, not a hard gate. The interview must rema
 
 On voice loss or channel change, preserve all confirmed evidence and continue in `INTERVIEW_ACTIVE` with the next highest-information-gain question. Do not repeat questions solely because the channel changed.
 
+Only text or transcript content actually delivered to the interview counts as evidence. Do not infer missing speech from the fact that an audio session remained connected. After each substantive voice answer, briefly reflect the captured fact before asking the next question so the user can correct an incomplete transcript. At natural topic boundaries, give a compact ledger checkpoint. If voice transcription becomes incomplete or stops advancing, preserve the last confirmed checkpoint and continue in text.
+
 The final readback and explicit confirmation may be spoken or typed. The confirmation must be explicit and attributable to the user, but it does not require voice verification.
